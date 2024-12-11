@@ -1,6 +1,6 @@
 # Countdown Timer with Interactive Effects
 
-This project creates an interactive countdown timer with some cool visual effects, including falling snowflakes and a particle effect when the user moves the mouse. It also includes an IntersectionObserver to animate elements (e.g., `.card`, `.info-grid`, and `.getbot-card`) as they scroll into view, providing a smooth fade-in and zoom effect.
+This project creates an interactive countdown timer with some cool visual effects, including falling snowflakes and a particle effect when the user moves the mouse. It also includes an IntersectionObserver to animate elements as they scroll into view, providing a smooth fade-in and zoom effect.
 
 ## Features
 
