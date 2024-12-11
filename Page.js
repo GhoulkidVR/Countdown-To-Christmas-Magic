@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const elements = document.querySelectorAll('.card, .info-grid, .getbot-card');
+    const elements = document.querySelectorAll('.time-box, .snowflakes-container');
 
     // Apply initial styles for fade-in and zoom effect
     elements.forEach(el => {
         Object.assign(el.style, {
             opacity: '0',
             transform: 'scale(0.9)', // Slight zoom-out effect
-            transition: 'opacity 0.6s ease, transform 0.6s ease'
+            transition: 'opacity 0.6s ease, transform 0.6s ease',
+            willChange: 'opacity, transform' // Hint the browser about upcoming changes for better performance
         });
     });
 
