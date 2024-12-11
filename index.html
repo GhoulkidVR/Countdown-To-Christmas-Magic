@@ -4,288 +4,233 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countdown To Christmas Magic!</title>
-    <style>
-    <!-- Add your favicon here -->
-    <link rel="icon" href="imageedit_5_7864740115.png" type="image/x-icon">
-
-    <!-- For better compatibility with multiple devices -->
     <link rel="icon" href="imageedit_5_7864740115.png" type="image/png">
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #1b2735, #090a0f);
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            overflow: hidden;
+            position: relative;
+            perspective: 1000px;
+            animation: gradient 5s infinite alternate;
+        }
 
-/* General Styles */
-body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(45deg, #1b2735, #090a0f);
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    overflow: hidden;
-    position: relative;
-    perspective: 1000px;
-    animation: gradient 5s infinite alternate;
-}
+        /* Animated Gradient Background */
+        @keyframes gradient {
+            0% {
+                background: linear-gradient(45deg, red, green);
+            }
+            100% {
+                background: linear-gradient(45deg, blue, purple);
+            }
+        }
 
-/* Animated Gradient Background */
-@keyframes gradient {
-    0% {
-        background: linear-gradient(45deg, red, green);
-    }
-    100% {
-        background: linear-gradient(45deg, blue, purple);
-    }
-}
+        /* Title Styles */
+        h1 {
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 3in;
+            text-shadow: 0 0 10px red, 0 0 30px green;
+            font-weight: 700;
+            color: #fffb96;
+            position: relative;
+            z-index: 1;
+            animation: titleAnimation 2s ease-out;
+        }
 
-/* Title Styles */
-h1 {
-    font-size: 4rem;
-    text-align: center;
-    margin-bottom: 3in;
-    text-shadow: 0 0 10px red, 0 0 30px green;
-    font-weight: 700;
-    color: #fffb96;
-    position: relative;
-    z-index: 1;
-    animation: titleAnimation 2s ease-out;
-}
+        /* Title Text Animation */
+        @keyframes titleAnimation {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
 
-/* Title Text Animation */
-@keyframes titleAnimation {
-    0% {
-        transform: scale(0);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
+        /* Countdown Container */
+        #countdown {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
 
-/* Countdown Container */
-#countdown {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+        /* Individual Time Box Styles */
+        .time-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
+            font-family: 'Roboto', sans-serif;
+        }
 
-/* Individual Time Box Styles */
-.time-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
-    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    position: relative;
-    z-index: 2;
-    font-family: 'Roboto', sans-serif;
-}
+        /* Hover Effect on Time Boxes */
+        .time-box:hover {
+            transform: scale(1.15);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+            animation: hoverAnimation 0.5s ease-out;
+        }
 
-/* Hover Effect on Time Boxes */
-.time-box:hover {
-    transform: scale(1.15);
-    background: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
-    animation: hoverAnimation 0.5s ease-out;
-}
+        /* Hover Animation */
+        @keyframes hoverAnimation {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+        }
 
-/* Hover Animation */
-@keyframes hoverAnimation {
-    0% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-    100% {
-        transform: scale(1.15);
-        opacity: 1;
-    }
-}
+        /* Time Values */
+        .time-box span {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #fffb96;
+            text-shadow: 0 0 10px #fffb96, 0 0 20px #fffb96;
+            position: relative;
+            z-index: 3;
+        }
 
-/* Time Values */
-.time-box span {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #fffb96;
-    text-shadow: 0 0 10px #fffb96, 0 0 20px #fffb96;
-    position: relative;
-    z-index: 3;
-}
+        /* Labels */
+        .time-box label {
+            margin-top: 5px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            opacity: 0.8;
+            color: #fff;
+            letter-spacing: 1px;
+            z-index: 3;
+        }
 
-/* Labels */
-.time-box label {
-    margin-top: 5px;
-    font-size: 1rem;
-    text-transform: uppercase;
-    opacity: 0.8;
-    color: #fff;
-    letter-spacing: 1px;
-    z-index: 3;
-}
+        /* Snowflake Animation */
+        .snowflake {
+            position: absolute;
+            font-size: 1.5rem;
+            animation: fall 10s linear infinite;
+            color: #fff;
+            text-shadow: 0 0 10px #fff;
+            will-change: transform, opacity;
+        }
 
-/* Snowflake Animation */
-.snowflake {
-    position: absolute;
-    font-size: 1.5rem;
-    animation: fall 10s linear infinite;
-    color: #fff;
-    text-shadow: 0 0 10px #fff;
-    will-change: transform, opacity;
-}
+        /* Snowflake Falling Animation */
+        @keyframes fall {
+            0% {
+                transform: translateX(0) rotate(0deg);
+                top: -10%;
+            }
+            100% {
+                transform: translateX(200px) rotate(360deg);
+                top: 110%;
+            }
+        }
 
-/* Snowflake Falling Animation */
-@keyframes fall {
-    0% {
-        transform: translateX(0) rotate(0deg);
-        top: -10%;
-    }
-    100% {
-        transform: translateX(200px) rotate(360deg);
-        top: 110%;
-    }
-}
+        /* Snowflakes Container */
+        .snowflakes-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-/* Snowflakes Container */
-.snowflakes-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-}
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2.5rem;
-    }
+            .time-box span {
+                font-size: 2rem;
+            }
 
-    .time-box span {
-        font-size: 2rem;
-    }
+            .time-box {
+                padding: 20px;
+            }
 
-    .time-box {
-        padding: 20px;
-    }
+            .snowflake {
+                font-size: 1.2rem;
+            }
+        }
 
-    .snowflake {
-        font-size: 1.2rem;
-    }
-}
+        /* Accessibility Enhancements */
+        .time-box {
+            outline: 2px solid transparent;
+            outline-offset: 4px;
+        }
 
-/* Accessibility Enhancements */
-.time-box {
-    outline: 2px solid transparent;
-    outline-offset: 4px;
-}
+        .time-box:focus-within {
+            outline: 2px solid #fffb96;
+        }
 
-.time-box:focus-within {
-    outline: 2px solid #fffb96;
-}
+        /* Footer Section */
+        footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 1rem;
+            color: #fff;
+            opacity: 0.7;
+            font-family: 'Roboto', sans-serif;
+            z-index: 10;
+        }
 
-/* Footer Section */
-footer {
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    text-align: center;
-    font-size: 1rem;
-    color: #fff;
-    opacity: 0.7;
-    font-family: 'Roboto', sans-serif;
-    z-index: 10;
-}
+        /* Footer Hover Effect */
+        footer p:hover {
+            color: #fffb96;
+            text-decoration: underline;
+            cursor: pointer;
+        }
 
-/* Footer Hover Effect */
-footer p:hover {
-    color: #fffb96;
-    text-decoration: underline;
-    cursor: pointer;
-}
+        /* Particle Effect Styling */
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #fffb96;
+            border-radius: 50%;
+            animation: particle-animation 2s ease-out forwards;
+            pointer-events: none;
+        }
 
-/* Particle Effect Styling */
-.particle {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: #fffb96;
-    border-radius: 50%;
-    animation: particle-animation 2s ease-out forwards;
-    pointer-events: none;
-}
-
-@keyframes particle-animation {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(0);
-        opacity: 0;
-    }
-}
-
-/* Snowflakes Container */
-.snowflakes-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Snowflakes Styling */
-.snowflake {
-    position: absolute;
-    font-size: 1.5rem;
-    opacity: 0.8;
-    color: #fff;
-    animation: fall 10s linear infinite;
-    text-shadow: 0 0 10px #fff;
-}
-
-@keyframes fall {
-    0% {
-        transform: translateX(0) rotate(0deg);
-        top: -10%;
-    }
-    100% {
-        transform: translateX(200px) rotate(360deg);
-        top: 110%;
-    }
-}
-
-/* General Styles (Include your existing styles here) */
-body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(to bottom, #1b2735, #090a0f);
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    overflow: hidden;
-    position: relative;
-    perspective: 1000px;
-}
-
-
+        @keyframes particle-animation {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -312,7 +257,10 @@ body {
     </div>
 
     <div class="snowflakes-container"></div> <!-- Snowflakes container -->
+
     <footer>
+        <p>&copy; <span id="year"></span> The Recboiis. All Rights Reserved.</p>
+    </footer>
 
     <script>
         function updateCountdown() {
@@ -351,10 +299,3 @@ body {
     </script>
 </body>
 </html>
-
-<footer>
-    <p>&copy; <span id="year"></span> The Recboiis. All Rights Reserved.</p>
-</footer>
-
-<script src="mouse movement.js"></script> <!-- Link to your external JS file -->
-</body>
