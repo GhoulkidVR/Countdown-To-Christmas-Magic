@@ -262,40 +262,34 @@
         <p>&copy; <span id="year"></span> The Recboiis. All Rights Reserved.</p>
     </footer>
 
-    <script>
-        function updateCountdown() {
-            const christmas = new Date('December 25, 2024 00:00:00').getTime();
-            const now = new Date().getTime();
-            const diff = christmas - now;
+<script>
+    function updateCountdown() {
+        const christmas = new Date('December 25, 2024 00:00:00').getTime();
+        const now = new Date().getTime();
+        const diff = christmas - now;
 
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-            document.getElementById('days').textContent = days;
-            document.getElementById('hours').textContent = hours;
-            document.getElementById('minutes').textContent = minutes;
-            document.getElementById('seconds').textContent = seconds;
+        if (diff <= 0) {
+            // If the countdown is over, show "Merry Christmas!"
+            document.getElementById('countdown').innerHTML = `
+                <h1 style="font-size: 3rem; text-shadow: 0 0 20px #fffb96;">
+                    🎄 Merry Christmas! 🎁
+                </h1>`;
+            return;
         }
 
-        setInterval(updateCountdown, 1000);
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-        function createSnowflake() {
-            const snowflake = document.createElement('div');
-            snowflake.textContent = '❄️';
-            snowflake.classList.add('snowflake');
-            snowflake.style.left = `${Math.random() * window.innerWidth}px`;
-            snowflake.style.fontSize = `${Math.random() * 10 + 10}px`;
-            snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;
-            document.body.appendChild(snowflake);
+        document.getElementById('days').textContent = days;
+        document.getElementById('hours').textContent = hours;
+        document.getElementById('minutes').textContent = minutes;
+        document.getElementById('seconds').textContent = seconds;
+    }
 
-            setTimeout(() => {
-                snowflake.remove();
-            }, 10000);
-        }
+    setInterval(updateCountdown, 1000);
+</script>
 
-        setInterval(createSnowflake, 100);
-    </script>
 </body>
 </html>
