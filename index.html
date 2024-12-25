@@ -23,7 +23,6 @@
             animation: gradient 5s infinite alternate;
         }
 
-        /* Animated Gradient Background */
         @keyframes gradient {
             0% {
                 background: linear-gradient(45deg, red, green);
@@ -33,20 +32,16 @@
             }
         }
 
-        /* Title Styles */
         h1 {
             font-size: 4rem;
             text-align: center;
-            margin-bottom: 3in;
+            margin-bottom: 2rem;
             text-shadow: 0 0 10px red, 0 0 30px green;
             font-weight: 700;
             color: #fffb96;
-            position: relative;
-            z-index: 1;
             animation: titleAnimation 2s ease-out;
         }
 
-        /* Title Text Animation */
         @keyframes titleAnimation {
             0% {
                 transform: scale(0);
@@ -58,20 +53,13 @@
             }
         }
 
-        /* Countdown Container */
         #countdown {
             display: flex;
             gap: 20px;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
         }
 
-        /* Individual Time Box Styles */
         .time-box {
             display: flex;
             flex-direction: column;
@@ -81,64 +69,33 @@
             border-radius: 15px;
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
             transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            z-index: 2;
-            font-family: 'Roboto', sans-serif;
         }
 
-        /* Hover Effect on Time Boxes */
-        .time-box:hover {
-            transform: scale(1.15);
-            background: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
-            animation: hoverAnimation 0.5s ease-out;
-        }
-
-        /* Hover Animation */
-        @keyframes hoverAnimation {
-            0% {
-                transform: scale(1);
-                opacity: 0.8;
-            }
-            100% {
-                transform: scale(1.15);
-                opacity: 1;
-            }
-        }
-
-        /* Time Values */
         .time-box span {
             font-size: 3rem;
             font-weight: bold;
             color: #fffb96;
             text-shadow: 0 0 10px #fffb96, 0 0 20px #fffb96;
-            position: relative;
-            z-index: 3;
         }
 
-        /* Labels */
-        .time-box label {
-            margin-top: 5px;
+        footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
             font-size: 1rem;
-            text-transform: uppercase;
-            opacity: 0.8;
             color: #fff;
-            letter-spacing: 1px;
-            z-index: 3;
+            opacity: 0.7;
         }
 
-        /* Snowflake Animation */
         .snowflake {
             position: absolute;
             font-size: 1.5rem;
             animation: fall 10s linear infinite;
             color: #fff;
             text-shadow: 0 0 10px #fff;
-            will-change: transform, opacity;
         }
 
-        /* Snowflake Falling Animation */
         @keyframes fall {
             0% {
                 transform: translateX(0) rotate(0deg);
@@ -149,92 +106,10 @@
                 top: 110%;
             }
         }
-
-        /* Snowflakes Container */
-        .snowflakes-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            .time-box span {
-                font-size: 2rem;
-            }
-
-            .time-box {
-                padding: 20px;
-            }
-
-            .snowflake {
-                font-size: 1.2rem;
-            }
-        }
-
-        /* Accessibility Enhancements */
-        .time-box {
-            outline: 2px solid transparent;
-            outline-offset: 4px;
-        }
-
-        .time-box:focus-within {
-            outline: 2px solid #fffb96;
-        }
-
-        /* Footer Section */
-        footer {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-            font-size: 1rem;
-            color: #fff;
-            opacity: 0.7;
-            font-family: 'Roboto', sans-serif;
-            z-index: 10;
-        }
-
-        /* Footer Hover Effect */
-        footer p:hover {
-            color: #fffb96;
-            text-decoration: underline;
-            cursor: pointer;
-        }
-
-        /* Particle Effect Styling */
-        .particle {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #fffb96;
-            border-radius: 50%;
-            animation: particle-animation 2s ease-out forwards;
-            pointer-events: none;
-        }
-
-        @keyframes particle-animation {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(0);
-                opacity: 0;
-            }
-        }
     </style>
 </head>
 <body>
-    <div>
+    <main>
         <h1>Countdown To Christmas Magic!</h1>
         <div id="countdown">
             <div class="time-box">
@@ -254,42 +129,53 @@
                 <label>Seconds</label>
             </div>
         </div>
-    </div>
+    </main>
 
-    <div class="snowflakes-container"></div> <!-- Snowflakes container -->
+    <div class="snowflakes-container"></div>
 
     <footer>
         <p>&copy; <span id="year"></span> The Recboiis. All Rights Reserved.</p>
     </footer>
 
-<script>
-    function updateCountdown() {
-        const christmas = new Date('December 25, 2024 00:00:00').getTime();
-        const now = new Date().getTime();
-        const diff = christmas - now;
+    <script>
+        function updateCountdown() {
+            const christmas = new Date('December 25, 2024 00:00:00').getTime();
+            const now = new Date().getTime();
+            const diff = christmas - now;
 
-        if (diff <= 0) {
-            // If the countdown is over, show "Merry Christmas!"
-            document.getElementById('countdown').innerHTML = `
-                <h1 style="font-size: 3rem; text-shadow: 0 0 20px #fffb96;">
-                    🎄 Merry Christmas! 🎁
-                </h1>`;
-            return;
+            if (diff <= 0) {
+                document.getElementById('countdown').innerHTML = `
+                    <h1 style="font-size: 3rem; text-shadow: 0 0 20px #fffb96;">
+                        🎄 Merry Christmas! 🎁
+                    </h1>`;
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
         }
 
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        function addSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
+            snowflake.style.animationDuration = Math.random() * 3 + 7 + 's';
+            snowflake.textContent = '❄';
+            document.querySelector('.snowflakes-container').appendChild(snowflake);
 
-        document.getElementById('days').textContent = days;
-        document.getElementById('hours').textContent = hours;
-        document.getElementById('minutes').textContent = minutes;
-        document.getElementById('seconds').textContent = seconds;
-    }
+            setTimeout(() => snowflake.remove(), 10000);
+        }
 
-    setInterval(updateCountdown, 1000);
-</script>
-
+        setInterval(updateCountdown, 1000);
+        setInterval(addSnowflake, 300);
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
