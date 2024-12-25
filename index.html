@@ -137,43 +137,48 @@
         <p>&copy; <span id="year"></span> The Recboiis. All Rights Reserved.</p>
     </footer>
 
-    <script>
-        function updateCountdown() {
-            const christmas = new Date('December 25, 2024 00:00:00').getTime();
-            const now = new Date().getTime();
-            const diff = christmas - now;
+<script>
+    function updateCountdown() {
+        const christmas = new Date('December 25, 2024 00:00:00').getTime();
+        const now = new Date().getTime();
+        const diff = christmas - now;
 
-            if (diff <= 0) {
-                document.getElementById('countdown').innerHTML = `
-                    <h1 style="font-size: 3rem; text-shadow: 0 0 20px #fffb96;">
+        if (diff <= 0) {
+            // Clear all content and display "Merry Christmas!"
+            document.body.innerHTML = `
+                <div style="
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100vh;
+                    background: linear-gradient(45deg, red, green);
+                    color: white;
+                    font-family: 'Roboto', sans-serif;
+                    text-align: center;
+                ">
+                    <h1 style="
+                        font-size: 4rem;
+                        font-weight: bold;
+                        text-shadow: 0 0 20px #fffb96, 0 0 40px #fffb96;
+                    ">
                         🎄 Merry Christmas! 🎁
-                    </h1>`;
-                return;
-            }
-
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-            document.getElementById('days').textContent = days;
-            document.getElementById('hours').textContent = hours;
-            document.getElementById('minutes').textContent = minutes;
-            document.getElementById('seconds').textContent = seconds;
+                    </h1>
+                </div>`;
+            return;
         }
 
-        function addSnowflake() {
-            const snowflake = document.createElement('div');
-            snowflake.className = 'snowflake';
-            snowflake.style.left = Math.random() * window.innerWidth + 'px';
-            snowflake.style.animationDuration = Math.random() * 3 + 7 + 's';
-            snowflake.textContent = '❄';
-            document.querySelector('.snowflakes-container').appendChild(snowflake);
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-            setTimeout(() => snowflake.remove(), 10000);
-        }
+        document.getElementById('days').textContent = days;
+        document.getElementById('hours').textContent = hours;
+        document.getElementById('minutes').textContent = minutes;
+        document.getElementById('seconds').textContent = seconds;
+    }
 
-        setInterval(updateCountdown, 1000);
+    setInterval(updateCountdown, 1000);
         setInterval(addSnowflake, 300);
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
